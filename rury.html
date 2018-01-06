@@ -264,6 +264,17 @@ function oblicz_cienka(omega, R, r, z0)
     wyj_cienka.x = x; wyj_cienka.y = y; wyj_cienka.z = z;
 }
 
+function dodaj_napisy(alfa, R, r, z0)
+{
+    ctx.font = "10px Arial";
+    ctx.fillText("r: " + r.toPrecision(4) + " mm, R: " + R.toPrecision(4) + " mm", POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 10);
+    ctx.fillText("alfa: " + (90 - alfa).toPrecision(4) + " stopni, z0: " + z0.toPrecision(4) + "mm", POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 25);
+    ctx.fillText("Obwód/circumf.: " + (Math.PI*2*r).toPrecision(4) + "mm", POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 40);
+    ctx.fillText(wej.dpi.toPrecision(4) + " dpi", POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 55);
+    ctx.fillText("naddatek/extra length: " + wej.naddatek + "mm", POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 70);
+    ctx.fillText("stworzone programem \"rury\"", POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 85);
+}
+
 function szablon_cienka(alfa, R, r, z0)
 {
     alfa = 90 - alfa;
@@ -337,7 +348,7 @@ function szablon_cienka(alfa, R, r, z0)
         ctx.stroke();
         
         obw_poprz = obw;
-    odl_poprz = wyj_cienka.odl;
+        odl_poprz = wyj_cienka.odl;
     }
 
     ctx.beginPath();
@@ -350,12 +361,7 @@ function szablon_cienka(alfa, R, r, z0)
     ctx.strokeStyle = "#000000";
     ctx.stroke();
     
-    ctx.font = "10px Arial";
-    ctx.fillText("r: " + r.toPrecision(4) + " mm, R: " + R.toPrecision(4) + " mm", POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 10);
-    ctx.fillText("alfa: " + (90 - alfa).toPrecision(4) + " stopni, z0: " + z0.toPrecision(4) , POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 25);
-    ctx.fillText("Obwód: " + (Math.PI*2*r).toPrecision(6) + "mm", POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 40);
-    ctx.fillText(wej.dpi.toPrecision(4) + " dpi", POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 55);
-    ctx.fillText("naddatek: " + wej.naddatek + "mm", POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 70);
+    dodaj_napisy(alfa, R, r, z0);    
 }
 
 function rysuj_cienka(omega_pocz, omega_kon, alfa, R, r, z0)
@@ -520,12 +526,7 @@ function szablon_gruba(omega_pocz, omega_kon, alfa, R, r, z0)
     ctx.strokeStyle = "#000000";
     ctx.stroke();
 
-    ctx.font = "10px Arial";
-    ctx.fillText("r: " + r.toPrecision(4) + " mm, R: " + R.toPrecision(4) + " mm", POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 10);	
-    ctx.fillText("alfa: " + (90 - alfa).toPrecision(4) + " stopni, z0: " + z0.toPrecision(4), POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 25);
-    ctx.fillText("Obwód: " + (Math.PI*2*R).toPrecision(4) + "mm", POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 40);
-    ctx.fillText(wej.dpi.toPrecision(4) + " dpi", POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 55);
-    ctx.fillText("naddatek: " + wej.naddatek + "mm", POCZATEK_X_SZABLON + 10, POCZATEK_Y_SZABLON + 70);
+    dodaj_napisy(alfa, R, r, z0);    
 }
 
 function zbierz_dane()
