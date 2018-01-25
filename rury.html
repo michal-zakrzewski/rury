@@ -312,7 +312,7 @@ function szablon_cienka(alfa, R, r, z0)
     }
 
     szablon_max_x = POCZATEK_X_SZABLON + obw_max * wej.piksele_na_mm;
-    szablon_max_y = POCZATEK_Y_SZABLON + (odl_max + wej.naddatek) * wej.piksele_na_mm;
+    szablon_max_y = POCZATEK_Y_SZABLON + (odl_max + odl_min + wej.naddatek) * wej.piksele_na_mm;
 
     if(szablon_max_x > canvas.width) canvas.width = szablon_max_x + 10;
     if(szablon_max_y > canvas.height) canvas.height = szablon_max_y + 10;
@@ -330,7 +330,8 @@ function szablon_cienka(alfa, R, r, z0)
         {
             ctx.beginPath();
             ctx.moveTo(POCZATEK_X_SZABLON, POCZATEK_Y_SZABLON);					   
-            ctx.lineTo(POCZATEK_X_SZABLON, POCZATEK_Y_SZABLON + wyj_cienka.odl * wej.piksele_na_mm);
+            //ctx.lineTo(POCZATEK_X_SZABLON, POCZATEK_Y_SZABLON + wyj_cienka.odl * wej.piksele_na_mm);
+            ctx.lineTo(POCZATEK_X_SZABLON, POCZATEK_Y_SZABLON + (wej.naddatek + odl_max + odl_min) * wej.piksele_na_mm);
             ctx.lineWidth = 1;
             ctx.strokeStyle = "#000000";
             ctx.stroke();
@@ -352,7 +353,9 @@ function szablon_cienka(alfa, R, r, z0)
     }
 
     ctx.beginPath();
-    ctx.moveTo(POCZATEK_X_SZABLON + obw * wej.piksele_na_mm, POCZATEK_Y_SZABLON + wyj_cienka.odl * wej.piksele_na_mm);
+    //ctx.moveTo(POCZATEK_X_SZABLON + obw * wej.piksele_na_mm, POCZATEK_Y_SZABLON + wyj_cienka.odl * wej.piksele_na_mm);
+    ctx.moveTo(POCZATEK_X_SZABLON, POCZATEK_Y_SZABLON + (wej.naddatek + odl_max + odl_min) * wej.piksele_na_mm);
+    ctx.lineTo(POCZATEK_X_SZABLON + obw * wej.piksele_na_mm, POCZATEK_Y_SZABLON + (wej.naddatek + odl_max + odl_min) * wej.piksele_na_mm);
     ctx.lineTo(POCZATEK_X_SZABLON + obw * wej.piksele_na_mm, POCZATEK_Y_SZABLON);
     ctx.lineTo(POCZATEK_X_SZABLON, POCZATEK_Y_SZABLON);
     ctx.lineTo(POCZATEK_X_SZABLON, POCZATEK_Y_SZABLON + wej.naddatek * wej.piksele_na_mm);
