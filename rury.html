@@ -336,6 +336,19 @@ function szablon_cienka(alfa, R, r, z0)
             ctx.strokeStyle = "#000000";
             ctx.stroke();
         }
+        else if((Math.abs(omega) %  90) <= PRZYROST_KATA)
+        {
+            ctx.beginPath();
+
+            szkicuj_linie(POCZATEK_X_SZABLON + obw * wej.piksele_na_mm,
+                POCZATEK_Y_SZABLON,
+                POCZATEK_X_SZABLON + obw * wej.piksele_na_mm,
+                POCZATEK_Y_SZABLON + (wej.naddatek + odl_max + odl_min ) * wej.piksele_na_mm);
+
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#000000";
+            ctx.stroke();   
+        }
 
         ctx.beginPath();
 
